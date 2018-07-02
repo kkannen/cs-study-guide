@@ -4,7 +4,7 @@ import {loadSICPLessons} from "../actions";
 
 const mapStateToProps = (state) => {
     return {
-        sicpLessons: state.sicpLessons
+        sicpLessons: state.sicpLessonsList
     }
 }
 const mapDispatchToProps = (dispatch) => {

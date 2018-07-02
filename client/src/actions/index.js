@@ -3,7 +3,7 @@ export function loadSICPLessons() {
         dispatch({
             type: "LOAD_SICP_LESSONS"
         });
-        fetch("http://localhost:3001/sicplessons").then((response) => {
+        fetch("/sicplessons").then((response) => {
             return response.json();
         }).then((sicplessons) => {
             dispatch(SICPLessonsLoaded(sicplessons));
