@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import App from "../App";
+import SICP from "../components/SICP";
 import {loadSICPLessons} from "../actions";
 
 const mapStateToProps = (state) => {
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(SICP);
