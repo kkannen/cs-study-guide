@@ -8,6 +8,12 @@ class SICP extends Component {
         console.log("did mount", this.props.sicpLessons.length)
       }
 
+    moduleWidth = () => {
+        if(this.props.sidebarOut) {
+            return {width:"80%", marginLeft:"20%"}
+        } return {width:"95%", marginLeft:"5%"}
+    }
+
     renderLessons = () => {
         return this.props.sicpLessons.map((lesson, index)=>
         <div key={index}>
@@ -21,7 +27,7 @@ class SICP extends Component {
     render() {
         console.log( "render", this.props.sicpLessons.length)
         return (
-        <div className="SICP">
+        <div className="SICP" style={this.moduleWidth()}>
             {this.renderLessons()}
         </div>
         );

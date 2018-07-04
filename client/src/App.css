@@ -1,8 +1,107 @@
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  width: 100%;
+  justify-content: last baseline;
+}
+
+/* SIDEBAR */
+
+.sidebarToggle {
+  position: fixed;
+  color: white;
+  outline: none;
+  border: none;
+  float: right;
+  background-color: transparent;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  cursor: pointer;
+  transition: 0.5s;
+}
+.toggleClosed {
+  z-index: 1;
+  -webkit-transform:rotate(0deg);
+  transform:rotate(0deg);
+}
+
+.Sidebar {
+  width: 20%;
+  height: 100vh;
+  background-color: #333;
+  transition: .4s;
+  margin-left: -8px;
+  margin-top: -8px;
+  z-index: 0;
+}
+
+.SidebarClosed {
+  width: 5%;
+}
+
+.SidebarModule {
+  text-align: left;
+  color: #eee;
+  width: 90%;
+}
+
+.moduleContainer {
+  background-color: inherit;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+/* SIDEBAR */
+.SICP {
+
+  z-index: 0;
 }
 
 .Lesson {
-  display: flex;
-  justify-content: center
+  width: 100%;
+  background-color: #eee;
 }
+
+.Lesson:hover {
+  background-color: #ddd;
+}
+
+.lesson {
+  display: flex;
+  justify-content: center;
+}
+
+.lesson > *{
+  width: 25%
+}
+
+.chapNums {
+  display: flex;
+  justify-content: center;
+}
+
+.ChapterNumber {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.material-icons {
+  cursor: pointer;
+  align-self: center;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+

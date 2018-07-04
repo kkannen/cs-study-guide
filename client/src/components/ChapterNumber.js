@@ -5,9 +5,9 @@ class ChapterNumber extends Component {
   render() {
 
     return (
-      <div className="ChapterNumber" onClick={this.props.clickEvent}>
+      <h4 className="ChapterNumber" onClick={this.props.clickEvent}>
         {this.props.chapterNumber}
-      </div>
+      </h4>
     );
   }
 }

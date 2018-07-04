@@ -48,12 +48,12 @@ class Lesson extends Component {
      
     render() {
         return(
-            <div className="lecture" style={{width:"100%"}} >
-                <div className="lectureRow">
+            <div className="Lesson" >
+                <div className="lesson">
                     <h4>{this.props.lesson["lessonNumber"]}</h4>
                     <h4>{this.props.lesson["title"]}</h4>
-                    <div>{this.renderChapterNumbers()}</div>
-                    <i className="material-icons" onClick={this.toggleVideo}>play_circle_outline</i>
+                    <div className="chapNums">{this.renderChapterNumbers()}</div>
+                    <div className="iconContainer"><i className="material-icons" onClick={this.toggleVideo}>play_circle_outline</i></div>
                 </div>
                 <div>
                     {this.renderPlaylists()}
