@@ -8,23 +8,23 @@
   height: 100vw;
   width: 20%;
   position: fixed;
-  background: linear-gradient(to bottom, #1F0A38, #E06244 65%, #F2E97E );
-
+  background: linear-gradient(134deg, rgb(43, 0, 122), rgb(98, 0, 119), rgb(139, 0, 117), rgb(255, 78, 96), rgb(255, 114, 84), rgb(255, 144, 69), rgb(255, 171, 49));
 }
 
 .SidebarModule {
   width: 90%;
   padding: 5%;
-
-}
-
-.SidebarModule:hover {
-  background-color: #444
+  height: 6vh;
+  display: flex
 }
 
 a {
   text-decoration: none;
   color: white;
+}
+
+a:hover {
+  color: #FFF7A3
 }
 
 a::after {

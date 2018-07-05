@@ -3,7 +3,6 @@ import {combineReducers} from "redux";
 const listOfModules = (state = [], action) => {
     return state;
 };
-
 const sicpLessonsList = (state = [], action) => {
     if(action.type === "SICP_LESSONS_LOADED") {
         return action.value;

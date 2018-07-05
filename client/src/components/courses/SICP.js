@@ -27,7 +27,7 @@ class SICP extends Component {
                 <li>Terminal for Mac: <a href="https://www.iterm2.com/" style={{color:"deepskyblue"}}>iterm2</a></li>
                 <li>Python: <a href="https://code.visualstudio.com/download" style={{color:"deepskyblue"}}>VSCode</a></li>
             </ul>
-            <LinearProgress style={{height: 20}} variant="determinate" value={this.props.progress}/>
+            <LinearProgress color="secondary" style={{height: 20}} variant="determinate" value={this.props.progress}/>
             {this.renderLessons()}
         </div>
         );
