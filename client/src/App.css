@@ -1,64 +1,45 @@
 .App {
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  display: flex;
   width: 100%;
-  justify-content: last baseline;
-}
-
-/* SIDEBAR */
-
-.sidebarToggle {
-  position: fixed;
-  color: white;
-  outline: none;
-  border: none;
-  float: right;
-  background-color: transparent;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-  cursor: pointer;
-  transition: 0.5s;
-}
-.toggleClosed {
-  z-index: 1;
-  -webkit-transform:rotate(0deg);
-  transform:rotate(0deg);
+  font-family: roboto;
+  display: flex;
 }
 
 .Sidebar {
+  height: 100vw;
   width: 20%;
-  height: 100vh;
-  background-color: #333;
-  transition: .4s;
-  margin-left: -8px;
-  margin-top: -8px;
-  z-index: 0;
-}
+  position: fixed;
+  background: linear-gradient(to bottom, #1F0A38, #E06244 65%, #F2E97E );
 
-.SidebarClosed {
-  width: 5%;
 }
 
 .SidebarModule {
-  text-align: left;
-  color: #eee;
   width: 90%;
+  padding: 5%;
+
 }
 
-.moduleContainer {
-  background-color: inherit;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
+.SidebarModule:hover {
+  background-color: #444
 }
 
-/* SIDEBAR */
-.SICP {
-
-  z-index: 0;
+a {
+  text-decoration: none;
+  color: white;
 }
 
+a::after {
+  color: white;
+}
+
+.courseMaterial {
+  width: 75%;
+  margin-left: 22.5%;
+}
+
+
+
+
+/*----------LESSON STYLING----------*/
 .Lesson {
   width: 100%;
   background-color: #eee;
@@ -68,16 +49,13 @@
   background-color: #ddd;
 }
 
-.lesson {
+.lesson > *{
+  width: 25%;
   display: flex;
   justify-content: center;
 }
 
-.lesson > *{
-  width: 25%
-}
-
-.chapNums {
+.lesson, .TextbookChapter, .Playlist, .chapNums, .iconContainer{
   display: flex;
   justify-content: center;
 }
@@ -90,11 +68,6 @@
 .material-icons {
   cursor: pointer;
   align-self: center;
-}
-
-.iconContainer {
-  display: flex;
-  justify-content: center;
 }
 
 

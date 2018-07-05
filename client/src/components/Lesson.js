@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Playlist from './Playlist';
 import TextbookChapter from './TextbookChapter';
 import ChapterNumber from './ChapterNumber';
+import Checkbox from '@material-ui/core/Checkbox';
 
 
 class Lesson extends Component {
@@ -12,6 +13,7 @@ class Lesson extends Component {
         checked: false,
         chapterSelected: null
     }
+    
 
     handleCheck = () => this.state.checked ? this.setState({checked: false}) : this.setState({checked: true});
 
@@ -45,11 +47,18 @@ class Lesson extends Component {
           )
         } return null
       }
+
+      handleCheck = () => this.state.checked ? this.setState({checked: false}) : this.setState({checked: true})
+
+      handleProgress = () => !this.state.checked ? this.props.increase() : this.props.decrease();
      
     render() {
         return(
             <div className="Lesson" >
                 <div className="lesson">
+                    <Checkbox 
+                    onClick={this.handleCheck} 
+                    onChange={this.handleProgress}/>
                     <h4>{this.props.lesson["lessonNumber"]}</h4>
                     <h4>{this.props.lesson["title"]}</h4>
                     <div className="chapNums">{this.renderChapterNumbers()}</div>

@@ -1,10 +1,11 @@
 import {connect} from "react-redux";
-import SICP from "../components/SICP";
+import SICP from "../components/courses/SICP";
 import {loadSICPLessons} from "../actions";
 
 const mapStateToProps = (state) => {
     return {
-        sicpLessons: state.sicpLessonsList
+        sicpLessons: state.sicpLessonsList,
+        progress: state.sicpProgress
     }
 }
 const mapDispatchToProps = (dispatch) => {

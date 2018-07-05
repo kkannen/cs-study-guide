@@ -17,3 +17,15 @@ export function SICPLessonsLoaded(sicplessons) {
         value: sicplessons
     }
 }
+
+export function addProgress() {
+    return {
+        type: "ADD_PROGRESS",
+    }
+}
+
+export function subtractProgress() {
+    return {
+        type: "SUBTRACT_PROGRESS"
+    }
+}
