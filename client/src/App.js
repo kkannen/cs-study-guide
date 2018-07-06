@@ -14,7 +14,7 @@ import MathForCS from "./components/courses/MathForCS"
 
 
 class App extends Component {
-  moduleWidth = () => this.props.sidebarIsOut ? {width: "75%"} : {width: "95%"}
+  moduleWidth = () => this.props.sidebarIsOut ? {width: "75%"} : {width: "93%"}
       
   render() {
 
@@ -27,7 +27,7 @@ class App extends Component {
                 <Route path="/sicp" component={SICP}/>
                 <Route path="/algorithms-and-data-structures" component={AlgorithmsDataStructures}/>
                 <Route path="/computer-architecture" component={ComputerArchitecture}/>
-                <Route path="/computer-networking" component={ComputerNetworking}/>
+                <Route path="/computer-networking" style={{display: "flex"}} component={ComputerNetworking}/>
                 <Route path="/databases" component={Databases}/>
                 <Route path="/distributed-systems" component={DistributedSystems}/>
                 <Route path="/languages-and-compilers" component={LanguagesAndCompilers}/>

@@ -4,9 +4,10 @@ class MathForCS extends Component {
 
   render() {
     return (
-      <div className="MathForCS">
-        <h1>Math For CS</h1>
-        <h1>Coming Soon</h1>
+      <div className="MathForCS comingSoon">
+        <h1 style={{fontSize: 50, marginBottom:5}}>Coming Soon</h1>
+        <hr style={{marginTop: 30, width: "90%"}}/>
+        <h1 style={{marginTop: 5}}>Math for CS</h1>
       </div>
     );
   }
