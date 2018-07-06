@@ -1,6 +1,19 @@
 import {connect} from "react-redux";
 import Sidebar from "../components/Sidebar";
+import {toggleSidebarIsOut} from "../actions";
 
-const mapStateToProps = (state) => {return {listOfModules: state.listOfModules}}
+const mapStateToProps = (state) => {
+    return {
+        listOfModules: state.listOfModules,
+        sidebarIsOut: state.sidebarIsOut
+    }
+}
 
-export default connect(mapStateToProps)(Sidebar);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleOpenSidebar: () => dispatch(toggleSidebarIsOut(true)),
+        handleCloseSidebar: () => dispatch(toggleSidebarIsOut(false))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

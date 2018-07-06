@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom"
 import './App.css';
 import Sidebar from './containers/SidebarContainer';
 import SICP from './containers/SICPContainer';
-import Landing from './components/Landing';
+import Landing from './containers/LandingContainer';
 import AlgorithmsDataStructures from "./components/courses/AlgorithmsDataStructures"
 import ComputerArchitecture from "./components/courses/ComputerArchitecture"
 import ComputerNetworking from "./components/courses/ComputerNetworking"
@@ -14,14 +14,15 @@ import MathForCS from "./components/courses/MathForCS"
 
 
 class App extends Component {
-     
+  moduleWidth = () => this.props.sidebarIsOut ? {width: "75%"} : {width: "95%"}
+      
   render() {
 
     return (
       <BrowserRouter>
         <div className="App">
           <Sidebar />
-            <div className="courseMaterial">
+            <div className="courseMaterial" style={this.moduleWidth()}>
               <Switch>
                 <Route path="/sicp" component={SICP}/>
                 <Route path="/algorithms-and-data-structures" component={AlgorithmsDataStructures}/>

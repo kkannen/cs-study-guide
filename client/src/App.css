@@ -2,14 +2,51 @@
   width: 100%;
   font-family: roboto;
   display: flex;
+  flex-direction: column;
 }
 
+/*----------SIDEBAR STYLES----------*/
 .Sidebar {
   height: 100vw;
   width: 20%;
   position: fixed;
   background: linear-gradient(134deg, rgb(43, 0, 122), rgb(98, 0, 119), rgb(139, 0, 117), rgb(255, 78, 96), rgb(255, 114, 84), rgb(255, 144, 69), rgb(255, 171, 49));
+  box-shadow: 5px 3px 15px #3C0079;
+  display: flex;
+  flex-direction: column;
+  transition: all 350ms cubic-bezier(0.150, 0.350, 0.15, 1.2);
 }
+
+.SidebarClosed {
+  width: 3%
+}
+
+.sidebarToggle {
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  transition: 300ms;
+  align-self: flex-end;
+  margin-top:5px;
+}
+
+.sidebarToggleClosed {
+  -webkit-transform:rotate(0deg);
+  transform: rotate(0deg)
+} 
+
+.addIcon {
+  color: white;
+}
+
+.homeIcon {
+  font-size: 3em;
+}
+
+
+/*----------SIDEBAR MODULE STYLES----------*/
 
 .SidebarModule {
   width: 90%;
@@ -32,11 +69,35 @@ a::after {
 }
 
 .courseMaterial {
-  width: 75%;
-  margin-left: 22.5%;
+  align-self: flex-end;
+  transition: all 350ms cubic-bezier(0.150, 0.350, 0.15, 1.2);
 }
 
+/*----------SIDEBAR MODULE STYLES----------*/
 
+/*----------LANDING STYLING----------*/
+  
+  .Landing {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  table {
+    text-align: left;
+  }
+
+  tbody:nth-child(even){
+    background: #3C007933;
+  }
+
+  td,th{
+    padding: 1em;
+  }
+
+
+/*----------LANDING STYLING----------*/
 
 
 /*----------LESSON STYLING----------*/
@@ -69,6 +130,9 @@ a::after {
   cursor: pointer;
   align-self: center;
 }
+
+/*----------LESSON STYLING----------*/
+
 
 
 

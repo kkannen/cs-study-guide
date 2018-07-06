@@ -21,12 +21,12 @@ class Lesson extends Component {
 
     toggleTextbook = (chapNum) => {
       if(!this.state.textbookVisible && !this.state.chapterSelected) {
-        this.setState({textbookVisible: true, chapterSelected: chapNum})
+        this.setState({textbookVisible: true, chapterSelected: chapNum, videoVisible:false})
         } if(this.state.textbookVisible && this.state.chapterSelected) {
             const lastChapterSelected = this.state.chapterSelected
-            return (chapNum !== lastChapterSelected) ? this.setState({textbookVisible: true, chapterSelected: chapNum}) : this.setState({textbookVisible:false});
+            return (chapNum !== lastChapterSelected) ? this.setState({textbookVisible: true, chapterSelected: chapNum, videoVisible:false}) : this.setState({textbookVisible:false});
         } if(!this.state.textbookVisible && this.state.chapterSelected) {
-            this.setState({textbookVisible: true, chapterSelected: chapNum})
+            this.setState({textbookVisible: true, chapterSelected: chapNum, videoVisible:false})
       }
     }
 

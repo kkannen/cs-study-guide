@@ -1,3 +1,10 @@
+export function toggleSidebarIsOut(bool) {
+    return {
+        type: "TOGGLE_SIDEBAR_IS_OUT",
+        value: bool
+    }
+}
+
 export function loadSICPLessons() {
     return function(dispatch) {
         dispatch({

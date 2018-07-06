@@ -11,6 +11,9 @@ const schema = new mongoose.Schema({
     },
     "playlist": {
         type: String
+    },
+    "checked": {
+        type: Boolean
     }
 
 });

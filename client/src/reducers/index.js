@@ -1,5 +1,11 @@
 import {combineReducers} from "redux";
 
+const sidebarIsOut = (state = false, action) => {
+    if(action.type === "TOGGLE_SIDEBAR_IS_OUT") {
+        return action.value
+    } return state
+}
+
 const listOfModules = (state = [], action) => {
     return state;
 };
@@ -19,10 +25,8 @@ const sicpProgress = (state = 0, action) => {
     }
 }
 
-
-
 const rootReducer = combineReducers({
-    listOfModules, sicpLessonsList, sicpProgress
+    listOfModules, sicpLessonsList, sicpProgress, sidebarIsOut
 });
 
 export default rootReducer;
