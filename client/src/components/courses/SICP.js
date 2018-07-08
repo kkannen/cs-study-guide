@@ -24,10 +24,10 @@ class SICP extends Component {
             <hr style={{width: "30%", margin: "10px 35%", borderColor: "#ff0077"}}/>
             
             
-                <p style={{marginBottom:0, marginTop:5}}>Code editor: <a href="https://code.visualstudio.com/download" style={{color:"#ff0077"}}>VSCode</a></p>
-                <p style={{marginBottom:0, marginTop:5}}>Terminal for Windows: <a href="https://git-scm.com/download/win" style={{color:"#ff0077"}}>Git for Windows</a></p>
-                <p style={{marginBottom:0, marginTop:5}}>Terminal for Mac: <a href="https://www.iterm2.com/" style={{color:"#ff0077"}}>iterm2</a></p>
-                <p style={{marginBottom:30, marginTop:5}}>Python: <a href="https://code.visualstudio.com/download" style={{color:"#ff0077"}}>VSCode</a></p>
+                <p style={{marginBottom:0, marginTop:5}}>Code editor: <a href="https://code.visualstudio.com/download" target="blank" style={{color:"#ff0077"}}>VSCode</a></p>
+                <p style={{marginBottom:0, marginTop:5}}>Terminal for Windows: <a href="https://git-scm.com/download/win" target="blank" style={{color:"#ff0077"}}>Git for Windows</a></p>
+                <p style={{marginBottom:0, marginTop:5}}>Terminal for Mac: <a href="https://www.iterm2.com/" target="blank" style={{color:"#ff0077"}}>iterm2</a></p>
+                <p style={{marginBottom:30, marginTop:5}}>Python: <a href="https://code.visualstudio.com/download" target="blank" style={{color:"#ff0077"}}>VSCode</a></p>
             
             <strong>Progress: </strong><LinearProgress color="secondary" style={{height: 15}} variant="determinate" value={this.props.progress}/>
             {this.renderLessons()}
