@@ -1,9 +1,10 @@
 let SICPLesson = require("../models/SICPLessonModel");
 
 
-module.exports.list = function list(request, response) {
+module.exports.read = function read(request, response) {
     SICPLesson.find({}).exec()
     .then(sicplessons => response.send(sicplessons.sort()))
+    console.log("got the lessons, bish")
 };
 
 // let listOfLessons = [

@@ -23,7 +23,7 @@ class SignIn extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit.bind(this)} style={{marginTop: 5}}>
         <FormGroup>
           <ControlLabel>Username</ControlLabel>
           <FormControl

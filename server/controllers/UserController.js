@@ -11,7 +11,7 @@ function create(req, res, next) {
     .json({ error: "You must provide an username and password" });
   }
   console.log("Look for a user with the username");
-  User.findOne({ username: u}).exec()
+  User.findOne({username: u}).exec()
   .then((existingUser) => {
       // If the user exist return an error on sign up
     if (existingUser) {
@@ -27,7 +27,7 @@ function create(req, res, next) {
 }
 
 function saveUser(username,password,done) {
-  hash(password, null,function (hashedPassword) {
+  hash(password, null, (hashedPassword) => {
     // Create a new user with the supplied username, and the hashed password
     const user = new User({ username, password: hashedPassword });
     console.log("Saving the user");

@@ -15,26 +15,31 @@ class Lesson extends Component {
     }
     
 
-    handleCheck = () => this.state.checked ? this.setState({checked: false}) : this.setState({checked: true});
+    handleCheck = () => this.state.checked ? 
+        this.setState({checked: false}) : 
+        this.setState({checked: true});
 
-    toggleVideo = () => this.state.videoVisible ? this.setState({videoVisible: false}) : this.setState({videoVisible:true, textbookVisible: false, chapterSelected: ""});
+    toggleVideo = () => this.state.videoVisible ? 
+        this.setState({videoVisible: false}) : 
+        this.setState({videoVisible:true, textbookVisible: false, chapterSelected: ""});
 
     toggleTextbook = (chapNum) => {
-      if(!this.state.textbookVisible && !this.state.chapterSelected) {
-        this.setState({textbookVisible: true, chapterSelected: chapNum, videoVisible:false})
-        } if(this.state.textbookVisible && this.state.chapterSelected) {
-            const lastChapterSelected = this.state.chapterSelected
-            return (chapNum !== lastChapterSelected) ? this.setState({textbookVisible: true, chapterSelected: chapNum, videoVisible:false}) : this.setState({textbookVisible:false});
-        } if(!this.state.textbookVisible && this.state.chapterSelected) {
-            this.setState({textbookVisible: true, chapterSelected: chapNum, videoVisible:false})
-      }
+        const lastChapterSelected = this.state.chapterSelected
+        return (chapNum !== lastChapterSelected) ? 
+        this.setState({textbookVisible: true, chapterSelected: chapNum, videoVisible:false}) : 
+        this.setState({textbookVisible:false});
     }
 
-      renderPlaylists = () => this.state.videoVisible ? <Playlist playlist={this.props.lesson["playlist"]}/> : null;
+      renderPlaylists = () => this.state.videoVisible ? 
+        <Playlist playlist={this.props.lesson["playlist"]}/> : null;
   
       renderChapterNumbers = () => {
         const chapterNumbers = Object.keys(this.props.lesson["reading"]);
-        return chapterNumbers.map((chapNum, i) => <ChapterNumber clickEvent={()=>this.toggleTextbook(chapNum)} key={i} chapterNumber={chapNum}/>)
+        return chapterNumbers.map((chapNum, i) => 
+            <ChapterNumber 
+                key={i}
+                clickEvent={()=>this.toggleTextbook(chapNum)}
+                chapterNumber={chapNum}/>)
       }
 
       renderTextbook = () => {
@@ -48,9 +53,13 @@ class Lesson extends Component {
         } return null
       }
 
-      handleCheck = () => this.state.checked ? this.setState({checked: false}) : this.setState({checked: true})
+      handleCheck = () => this.state.checked ? 
+        this.setState({checked: false}) : 
+        this.setState({checked: true})
 
-      handleProgress = () => !this.state.checked ? this.props.increase() : this.props.decrease();
+      handleProgress = () => !this.state.checked ? 
+        this.props.increase() : 
+        this.props.decrease();
      
     render() {
         return(
@@ -62,7 +71,9 @@ class Lesson extends Component {
                     <h4>{this.props.lesson["lessonNumber"]}</h4>
                     <h4>{this.props.lesson["title"]}</h4>
                     <div className="chapNums">{this.renderChapterNumbers()}</div>
-                    <div className="iconContainer"><i className="material-icons" onClick={this.toggleVideo}>play_circle_outline</i></div>
+                    <div className="iconContainer">
+                        <i className="material-icons" onClick={this.toggleVideo}>play_circle_outline</i>
+                    </div>
                 </div>
                 <div>
                     {this.renderPlaylists()}

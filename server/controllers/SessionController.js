@@ -4,7 +4,7 @@ const compare = require("../services/hash").compare;
 
 function create(req, res) {
   const { username, password } = req.body;
-  console.log("Looking for a user with the username",username);
+  console.log("Looking for a user with the username ", username);
 
   User.findOne({ username }).exec()
   .then(user => {
@@ -14,7 +14,7 @@ function create(req, res) {
       console.log("No user found with this username",username);
       return res.send("No user found with this username");
     }
-    compare(password, user.password, function (err, isMatch) {
+    compare(password, user.password, (err, isMatch) => {
       // If there is an error call done with our error
       if (err) {
         return res.send("Error occured");
@@ -24,12 +24,12 @@ function create(req, res) {
       if (!isMatch) {
         return res.send("Invalid password");
       }
-      console.log("The username was found and the passwords matched",username);
+      console.log("The username was found and the passwords matched", username);
       // If we have no errors and the passwords match
       // call done with a `null` argument, signifying no error
       // and with the now signed in user
       const token = tokenForUser(user);
-      res.json({ token});
+      res.json({token});
     });
   }).catch(() => {
     return res.send("Error occured");

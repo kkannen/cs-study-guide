@@ -11,7 +11,6 @@ import Databases from "./components/courses/Databases"
 import DistributedSystems from "./components/courses/DistributedSystems"
 import LanguagesAndCompilers from "./components/courses/LanguagesAndCompilers"
 import MathForCS from "./components/courses/MathForCS"
-import TopNavbar from './components/TopNavbar';
 import SignUpSignIn from './components/SignUpSignIn';
 
 
@@ -51,35 +50,7 @@ class App extends Component {
     };
   };
 
-  // handleSignIn = (credentials) => {
-  //   const {username, password} = credentials;
-  //   if(!username.trim() || !password.trim()){
-  //     this.setState({
-  //       signUpSignInError: "Please provide username and password"
-  //     });
-  //   } else {
-  //     fetch("/sessions", {
-  //       method: "POST",
-  //       headers: {"Content-Type": "application/json"},
-  //       body: JSON.stringify(credentials)
-  //     }).then((response) => {
-  //       if (response.status === 304) {
-  //         return this.setState({
-  //           signUpSignInError: "Invalid login"
-  //         });
-  //       } return response.json()
-  //     }).then((data) => {
-  //       const {token} = data;
-  //       localStorage.setItem("token", token);
-  //       this.setState({
-  //         signUpSignInError: "",
-  //         authenticated:token
-  //       });
-  //     });
-  //   };
-  // };
-
-  handleSignIn(credentials) {
+  handleSignIn = (credentials) => {
     const { username, password } = credentials;
     if (!username.trim() || !password.trim()) {
       this.setState({
@@ -92,7 +63,7 @@ class App extends Component {
         body: JSON.stringify(credentials),
       })
         .then((res) => {
-          if (res.status === 401 || res.status === 304) {
+          if (res.status === 401) {
             console.log('invalid login');
             this.setState({
               signUpSignInError: 'Invalid login.',
@@ -106,7 +77,7 @@ class App extends Component {
           localStorage.setItem('token', token);
           this.setState({
             signUpSignInError: '',
-            authenticated: token,
+            authenticated: token
           });
         });
     }
@@ -121,17 +92,19 @@ class App extends Component {
 
   renderSignUpSignIn = () => {
     return (
-      <SignUpSignIn
-        error={this.state.signUpSignInError}
-        onSignUp={this.handleSignUp}
-        onSignIn={this.handleSignIn}/>
+      <div className="container">
+        <SignUpSignIn
+          error={this.state.signUpSignInError}
+          onSignUp={this.handleSignUp}
+          onSignIn={this.handleSignIn}/>
+      </div>
     );
   };
 
   renderApp = () => {
     return (
       <div className="protectedContent">
-        <Sidebar />
+        <Sidebar onSignOut={this.handleSignOut}/>
           <div className="courseMaterial" style={this.moduleWidth()}>
             <Switch>
               <Route path="/sicp" component={SICP}/>
@@ -164,9 +137,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <TopNavbar
-            showNavItems={this.state.authenticated}
-            onSignOut={this.handleSignOut} />
           {whatToShow}
         </div>
       </BrowserRouter>

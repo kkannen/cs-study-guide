@@ -1,9 +1,9 @@
 const bcrypt = require("bcrypt-nodejs");
 
-function hash(word,err,done) {
-  bcrypt.genSalt(10, function (saltErr, salt) {
-    console.log("the salt",salt);
-    bcrypt.hash(word, salt, null, function (hashErr, hashedWord) {
+function hash(word, err, done) {
+  bcrypt.genSalt(10, (saltErr, salt) => {
+    console.log("the salt", salt);
+    bcrypt.hash(word, salt, null, (hashErr, hashedWord) => {
       if (hashErr) {
         return err(hashErr);
       }
@@ -12,8 +12,8 @@ function hash(word,err,done) {
   });
 }
 
-function compare(word,hashedWord,done) {
-  bcrypt.compare(word, hashedWord,done);
+function compare(word, hashedWord, done) {
+  bcrypt.compare(word, hashedWord, done);
 }
 
 exports.hash = hash;
