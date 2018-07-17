@@ -69,3 +69,21 @@ export function AddedClassesLoaded(addedclasses) {
     }
 }
 
+export function loadUserProgress(id) {
+    return function(dispatch) {
+        fetch(`/users/${id}`)
+        .then((response) => {
+            return response.json();
+        }).then((userProgress) => {
+            dispatch(userProgressLoaded(userProgress))
+        })
+    }
+}
+
+export function userProgressLoaded(userProgress) {
+    return {
+        type: "GET_USER_PROGRESS",
+        value: userProgress
+    }
+}
+

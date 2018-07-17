@@ -13,7 +13,7 @@ import LanguagesAndCompilers from "./components/courses/LanguagesAndCompilers"
 import MathForCS from "./components/courses/MathForCS"
 import SignUpSignIn from './components/SignUpSignIn';
 import AdminAddClass from './containers/AdminAddClassContainer';
-import BonusClasses from './components/courses/BonusClasses';
+import BonusClasses from './containers/BonusClassesContainer';
 
 
 class App extends Component {
@@ -22,6 +22,10 @@ class App extends Component {
     signUpSignInError: "",
     authenticated: false
   };
+
+  componentDidMount = () => {
+    console.log("app didmount")
+  }
 
   handleSignUp = (credentials) => {
     const {username, password, confirmPassword} = credentials;
@@ -128,7 +132,7 @@ class App extends Component {
   render() {
 
     let whatToShow;
-    if(this.state.authenticated){
+    if(!this.state.authenticated){
       whatToShow = this.renderApp();
     } else {
       whatToShow = this.renderSignUpSignIn();

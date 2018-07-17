@@ -60,14 +60,18 @@ class Lesson extends Component {
       handleProgress = () => !this.state.checked ? 
         this.props.increase() : 
         this.props.decrease();
+
+        // <Checkbox 
+        //             onClick={this.handleCheck} 
+        //             onChange={this.handleProgress}/>
      
     render() {
+        console.log("lesson completed", this.props.completed)
         return(
             <div className="Lesson" >
                 <div className="lesson">
                     <Checkbox 
-                    onClick={this.handleCheck} 
-                    onChange={this.handleProgress}/>
+                    checked={this.props.completed}/>
                     <h4>{this.props.lesson["lessonNumber"]}</h4>
                     <h4>{this.props.lesson["title"]}</h4>
                     <div className="chapNums">{this.renderChapterNumbers()}</div>
