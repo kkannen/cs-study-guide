@@ -2,7 +2,7 @@ const User = require("../models/UserModel");
 const tokenForUser = require("../services/token").tokenForUser;
 const hash = require("../services/hash").hash;
 
-function create(req, res, next) {
+module.exports.create = (req, res, next) => {
   const { username, password } = req.body;
   const u = username;
   // If no username or password was supplied return an error
@@ -16,7 +16,7 @@ function create(req, res, next) {
       // If the user exist return an error on sign up
     if (existingUser) {
       console.log("This username is already being used");
-      return res.status(422).json({ error: "Username is in use" });
+      return res.status(422).json({ error: "This username is already in use" });
     }
     console.log("This username is free to use");
     saveUser(username,password,(token) => {
@@ -29,7 +29,21 @@ function create(req, res, next) {
 function saveUser(username,password,done) {
   hash(password, null, (hashedPassword) => {
     // Create a new user with the supplied username, and the hashed password
-    const user = new User({ username, password: hashedPassword });
+    //create an object with a key corresponding to each lesson in a module and value set to false. represents progress when the user has not completed any lessons
+    const sicpProg = {};
+    const createSicpProgressObj = () => {
+      for(let x = 1; x <= 38; x++){
+        Object.keys(sicpProg).push(`lesson${x}`)
+        sicpProg[`lesson${x}`] = false;
+      }
+      return sicpProg;
+    }
+
+    const user = new User({ 
+      username, 
+      password: hashedPassword,
+      sicpProgress: createSicpProgressObj()
+    });
     console.log("Saving the user");
     user.save()
       .then(u => {
@@ -39,4 +53,10 @@ function saveUser(username,password,done) {
   });
 }
 
-exports.create = create;
+module.exports.read = (request, response) => {
+  User.findById({"_id": request.params.id}).exec()
+  .then(contact => response.json(contact))
+};
+
+
+

@@ -14,6 +14,7 @@ class Sidebar extends Component {
                 <div className={this.sidebarClass()}>
                     <button className={this.buttonClass()} onClick={this.toggleSidebar}><i className="material-icons addIcon"> arrow_forward_ios</i></button>
                     <Link to="/"><h3 style={{marginLeft:"5%"}}>Home</h3></Link>
+                    <Link to="/admin-add-class" style={{marginLeft:"5%"}}><h3>Admin</h3></Link>
                     {this.props.listOfModules.map((module, index) => {
                         return(<Link to={module.route} key={index}><SidebarModule module={module}/></Link>)})}
                     <Link to="/"><h3 onClick={this.props.onSignOut} style={{marginLeft:"5%"}}>Log Out</h3></Link>

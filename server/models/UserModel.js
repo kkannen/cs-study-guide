@@ -12,6 +12,34 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+
+  sicpProgress: {
+    type: Object
+  },
+
+  algorithmsProgress: {
+    type: Object
+  },
+
+  computerArchitectureProgress: {
+    type: Object
+  },
+
+  computerNetworkingProgress: {
+    type: Object
+  },
+
+  databasesProgress: {
+    type: Object
+  },
+
+  languagesAndCompilersProgress: {
+    type: Object
+  },
+
+  mathForCSProgress: {
+    type: Object
   }
 });
 

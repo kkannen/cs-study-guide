@@ -12,13 +12,15 @@ import DistributedSystems from "./components/courses/DistributedSystems"
 import LanguagesAndCompilers from "./components/courses/LanguagesAndCompilers"
 import MathForCS from "./components/courses/MathForCS"
 import SignUpSignIn from './components/SignUpSignIn';
+import AdminAddClass from './containers/AdminAddClassContainer';
+import BonusClasses from './components/courses/BonusClasses';
 
 
 class App extends Component {
 
   state = {
     signUpSignInError: "",
-    authenticated: localStorage.getItem("token") || false
+    authenticated: false
   };
 
   handleSignUp = (credentials) => {
@@ -37,9 +39,11 @@ class App extends Component {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(credentials)
       }).then((response) => {
-        console.log(response)
         return response.json();
       }).then((data) => {
+        if(data["error"]) {
+          return this.setState({signUpSignInError: data["error"]})
+        }
         const {token} = data;
         localStorage.setItem("token", token);
         this.setState({
@@ -50,29 +54,23 @@ class App extends Component {
     };
   };
 
-  handleSignIn = (credentials) => {
+    handleSignIn = (credentials) => {
     const { username, password } = credentials;
     if (!username.trim() || !password.trim()) {
       this.setState({
         signUpSignInError: 'Must Provide All Fields',
       });
     } else {
-      fetch('/sessions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials),
-      })
-        .then((res) => {
-          if (res.status === 401) {
-            console.log('invalid login');
-            this.setState({
-              signUpSignInError: 'Invalid login.',
-            });
-          } else {
-            return res.json();
+      fetch("/sessions", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(credentials)
+      }).then((response) => {
+        return response.json();
+        }).then((data) => {
+          if(data["error"]){
+            return this.setState({signUpSignInError: data["error"]})
           }
-        })
-        .then((data) => {
           const { token } = data;
           localStorage.setItem('token', token);
           this.setState({
@@ -81,7 +79,7 @@ class App extends Component {
           });
         });
     }
-  } 
+  }
 
   handleSignOut = () => {
     localStorage.removeItem("token");
@@ -107,6 +105,8 @@ class App extends Component {
         <Sidebar onSignOut={this.handleSignOut}/>
           <div className="courseMaterial" style={this.moduleWidth()}>
             <Switch>
+              <Route path="/admin-add-class" component={AdminAddClass}/>
+              <Route path="/bonus-classes" component={BonusClasses}/>
               <Route path="/sicp" component={SICP}/>
               <Route path="/algorithms-and-data-structures" component={AlgorithmsDataStructures}/>
               <Route path="/computer-architecture" component={ComputerArchitecture}/>

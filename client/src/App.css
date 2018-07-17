@@ -18,6 +18,16 @@
   align-items: center;
 }
 
+/*----------ADMIN ADD CLASS STYLES----------*/
+
+.adminAddClass {
+  width: 60%;
+  margin-left: 20%;
+  
+}
+
+/*----------SIGN UP SIGN IN STYLES----------*/
+
 .SignUpSignIn {
   background-color: #ffffffaa;
   width: 60%;

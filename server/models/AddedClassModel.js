@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
 const schema = new mongoose.Schema({
-    "lessonNumber": {
-        type: Number
-    },
     "title": {
         type: String
     },
@@ -14,4 +11,4 @@ const schema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("SICPLesson", schema)
+module.exports = mongoose.model("AddedClass", schema)

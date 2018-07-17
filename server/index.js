@@ -9,8 +9,9 @@ app.use(bodyParser.json());
 app.use(require("./routes/SICPLessonRoutes"))
 app.use(require("./routes/UserRoutes"));
 app.use(require("./routes/SessionRoutes"));
-app.use(require("./routes/AuthenticationRoutes"));
+//app.use(require("./routes/AuthenticationRoutes"));
 app.use(require("./routes/SICPLessonRoutes"))
+app.use(require("./routes/AddedClassRoutes"))
 
 
 mongoose.set("debug", true);
