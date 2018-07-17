@@ -1,4 +1,4 @@
-module.exports [
+module.exports = [
     {
             "title": "Functions",
             "reading": {
@@ -38,9 +38,7 @@ module.exports [
         },
         {
             "title": "Iteration",
-            "reading": {
-                none : ""
-            }, 
+            "reading": {"none": ""}, 
             "playlist": "PL6BsET-8jgYUTs_JCU3Zz8KBcF-X3P4Ds"
         },
         {

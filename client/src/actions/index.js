@@ -36,3 +36,54 @@ export function subtractProgress() {
         type: "SUBTRACT_PROGRESS"
     }
 }
+
+export function adminAddClass(addedClass) {
+    return function(dispatch) {
+        fetch("/addedClasses", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(addedClass)
+        }).then(() => dispatch(loadAddedClasses()));
+    }
+}
+
+export function loadAddedClasses() {
+    return function(dispatch) {
+        dispatch({
+            type: "LOAD_ADDED_CLASSES"
+        });
+        fetch("/addedClasses").then((response) => {
+            return response.json();
+        }).then((addedclasses) => {
+            dispatch(AddedClassesLoaded(addedclasses));
+        });
+    };
+};
+
+export function AddedClassesLoaded(addedclasses) {
+    return {
+        type: "ADDED_CLASSES_LOADED",
+        value: addedclasses
+    }
+}
+
+export function loadUserProgress(id) {
+    return function(dispatch) {
+        fetch(`/users/${id}`)
+        .then((response) => {
+            return response.json();
+        }).then((userProgress) => {
+            dispatch(userProgressLoaded(userProgress))
+        })
+    }
+}
+
+export function userProgressLoaded(userProgress) {
+    return {
+        type: "GET_USER_PROGRESS",
+        value: userProgress
+    }
+}
+

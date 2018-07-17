@@ -6,7 +6,7 @@ class Landing extends Component {
     const listOfModules = this.props.listOfModules
     return listOfModules.map((module, index) => {
       return(
-        <tbody key={index} style={{border: "10px solid black"}}>
+        <tbody key={index}>
           <tr>
             <td>{module.title}</td>
             <td>{module.description}</td>

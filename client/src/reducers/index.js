@@ -9,6 +9,13 @@ const sidebarIsOut = (state = false, action) => {
 const listOfModules = (state = [], action) => {
     return state;
 };
+
+const addedClassesList = (state=[], action) => {
+    if(action.type === "ADDED_CLASSES_LOADED") {
+        return action.value;
+    } return state;
+}
+
 const sicpLessonsList = (state = [], action) => {
     if(action.type === "SICP_LESSONS_LOADED") {
         return action.value;
@@ -25,8 +32,19 @@ const sicpProgress = (state = 0, action) => {
     }
 }
 
+const userProgress = (state = {}, action) => {
+    if(action.type === "GET_USER_PROGRESS") {
+        return action.value
+    } return state;
+}
+
 const rootReducer = combineReducers({
-    listOfModules, sicpLessonsList, sicpProgress, sidebarIsOut
+    listOfModules, 
+    sicpLessonsList, 
+    sicpProgress, 
+    sidebarIsOut, 
+    addedClassesList,
+    userProgress
 });
 
 export default rootReducer;
