@@ -58,5 +58,15 @@ module.exports.read = (request, response) => {
   .then(contact => response.json(contact))
 };
 
+module.exports.update = ((request, response) => {
+  const newSicpProgress = {
+    sicpProgress: request.body,
+  }
+  User.updateOne({"_id": request.params.id},
+  newSicpProgress).exec().then(sicpprog => {
+    response.json(sicpprog)
+  })
+})
+
 
 

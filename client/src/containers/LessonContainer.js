@@ -1,19 +1,13 @@
-import {connect} from "react-redux";
-import Lesson from "../components/Lesson"
-import {addProgress, subtractProgress} from "../actions";
+// import {connect} from "react-redux";
+// import Lesson from "../components/Lesson"
+// import {updateSicpProgress} from "../actions";
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        increase: function(){
-            let action = addProgress();
-            dispatch(action);
-        },
-        decrease: function(){
-            let action = subtractProgress();
-            dispatch(action);
-        }
-        }
-    };
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         handleLessonChecked: () => dispatch(updateSicpProgress(true)),
+//         handleLessonUnchecked: () => dispatch(updateSicpProgress(false))
+//         }
+//     };
 
 
-export default connect(null, mapDispatchToProps)(Lesson);
+// export default connect(null, mapDispatchToProps)(Lesson);

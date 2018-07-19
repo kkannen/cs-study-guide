@@ -1,4 +1,4 @@
-//require("dotenv").config({path: "/Users/kristakannen/Documents/ACA/cs-study-guide/.env"})
+require("dotenv").config()
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -16,7 +16,7 @@ app.use(require("./routes/AddedClassRoutes"))
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://kkannen:learncs1@ds259250.mlab.com:59250/learn-cs")
+mongoose.connect(process.env.mongodburi)
 .then(() => {
   console.log('\x1b[36m%s\x1b[0m', "mongoose connected successfully");
 },
@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-const port = /*process.env.PORT ||*/ 3001;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });

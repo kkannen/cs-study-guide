@@ -1,37 +1,64 @@
 import React, { Component } from 'react';
-import Lesson from "../../containers/LessonContainer";
+import Lesson from "../../components/Lesson";
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 
 class SICP extends Component {
-
-    componentDidMount = () => {
-        
-        this.props.loadSICPLessons()
-        console.log("sicp did mount");
-        this.props.loadUserProgress("5b4c0d68ed799c1efba2a786")
-        
-      }
-
-    renderLessons = () => {
-        return this.props.sicpLessons.map((lesson, index) => 
-        <div key={index}>
-            <Lesson 
-            lesson={lesson} 
-            completed={this.props.userProgress["sicpProgress"][`lesson${lesson.lessonNumber}`]}/>
-        </div>)
+    state ={
+        lessons: this.props.currentUser.sicpProgress
     }
 
-    numberOfCompletedLessons = () => {
-        const lessonKeys = Object.keys(this.props.userProgress["sicpProgress"])
-        console.log(lessonKeys.filter((lesson, index) => {
-            return this.props.userProgress["sicpProgress"][lesson]
-        }))
+    getUserInfo = () => {
+        fetch(`/users/${this.props.currentUser._id}`).then((response) => {
+        response.json().then((user) => {
+          this.setState({lessons: user.sicpProgress})
+        });
+      });
+      }
+    
+    componentDidMount = () => {
+        this.props.loadSICPLessons()
+        this.getUserInfo()
+    }
+
+    handleCheckUncheck = (key) => {
+        if(this.state.lessons)
+{        if (this.state.lessons[`lesson${key}`]) {
+            const completedClass = {[`lesson${key}`]: false}
+            this.setState({addedClass: Object.assign(this.state.lessons, completedClass)})
+            fetch(`/users/${this.props.currentUser._id}`, {
+                method: "PUT",
+                body: JSON.stringify(this.state.lessons),
+                headers: {"Content-Type": "application/json"}
+            })
+        } else {
+            const completedClass = {[`lesson${key}`]: true}
+            this.setState({addedClass: Object.assign(this.state.lessons, completedClass)})
+            fetch(`/users/${this.props.currentUser._id}`, {
+                method: "PUT",
+                body: JSON.stringify(this.state.lessons),
+                headers: {"Content-Type": "application/json"}
+            })
+        }}
+    }
+
+    renderLessons = () => {
+            return this.props.sicpLessons.map((lesson, index) => 
+            <div key={index}>
+                <Lesson 
+                check={(key)=>this.handleCheckUncheck(key)}
+                lesson={lesson}
+                progress={this.state.lessons}
+                completed={this.state.lessons[`lesson${lesson.lessonNumber}`]}
+                />
+            </div>)
+        }
+
+    calculateProgress = () => {
+        return (((Object.values(this.state.lessons).filter(lesson => lesson).length)/38)*100)
     }
 
     render = () => {
-        
-        
         return (
         <div className="SICP">
         
@@ -49,9 +76,8 @@ class SICP extends Component {
                 <p style={{marginBottom:30, marginTop:5}}>Python: <a href="https://code.visualstudio.com/download" target="blank" style={{color:"#ff0077"}}>VSCode</a></p>
             
             <strong>Progress: </strong>
-            <LinearProgress color="secondary" style={{height: 15}} variant="determinate" value={this.props.progress}/>
+            <LinearProgress color="secondary" style={{height: 15}} variant="determinate" value={this.calculateProgress()} />
             {this.renderLessons()}
-            {this.numberOfCompletedLessons()}
         </div>
         );
     }
