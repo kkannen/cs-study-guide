@@ -10,7 +10,7 @@ module.exports.create = (request, response) => {
     const newAddedClass = new AddedClass({
 
         "title": request.body.title,
-        "reading": request.body.reading,
+        "reading": {[request.body.readingTitle] : request.body.readingLink},
         "playlist": request.body.playlist,
 
     })

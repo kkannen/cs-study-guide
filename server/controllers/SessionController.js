@@ -33,7 +33,7 @@ module.exports.create = (req, res) => {
       // call done with a `null` argument, signifying no error
       // and with the now signed in user
       const token = tokenForUser(user);
-      res.json({token});
+      res.json({token, user});
     });
   }).catch(() => {
     return res.send("Error occured");

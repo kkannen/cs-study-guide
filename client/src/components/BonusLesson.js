@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import Playlist from './Playlist';
 import TextbookChapter from './TextbookChapter';
 import ChapterNumber from './ChapterNumber';
-import Checkbox from '@material-ui/core/Checkbox';
 
-
-class Lesson extends Component {
+class BonusLesson extends Component {
 
     state = {
         videoVisible: false,
@@ -14,11 +12,7 @@ class Lesson extends Component {
         chapterSelected: null,
         lessons: this.props.progress
     }
-    
 
-    handleCheck = () => this.state.checked ? 
-        this.setState({checked: false}) : 
-        this.setState({checked: true});
 
     toggleVideo = () => this.state.videoVisible ? 
         this.setState({videoVisible: false}) : 
@@ -53,24 +47,12 @@ class Lesson extends Component {
           )
         } return null
       }
-
-      handleCheck = () => this.state.checked ? 
-        this.setState({checked: false}) : 
-        this.setState({checked: true})
-
-      handleProgress = () => !this.state.checked ? 
-        this.props.increase() : 
-        this.props.decrease();
-
      
     render() {
         return(
             <div className="Lesson" >
                 <div className="lesson">
-                    <Checkbox 
-                    checked={this.props.progress[`lesson${this.props.lesson.lessonNumber}`]}
-                    onClick={(key)=>this.props.check(this.props.lesson.lessonNumber)}/>
-                    <h4>{this.props.lesson["lessonNumber"]}</h4>
+                    <h4>{this.props.lessonNumber}</h4>
                     <h4>{this.props.lesson["title"]}</h4>
                     <div className="chapNums">{this.renderChapterNumbers()}</div>
                     <div className="iconContainer">
@@ -85,4 +67,4 @@ class Lesson extends Component {
         )
     }
 }
-export default Lesson;
+export default BonusLesson;

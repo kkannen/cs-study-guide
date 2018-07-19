@@ -7,7 +7,8 @@ class AdminAddClass extends Component {
   state = {
     addedClass: {
       title: "",
-      reading: "",
+      readingTitle: "",
+      readingLink: "",
       playlist: ""
     }
   }
@@ -25,8 +26,12 @@ class AdminAddClass extends Component {
     this.setState({addedClass: Object.assign(this.state.addedClass, addedClass)})
   }
 
-  handleReadingInput = (e) => {
-    const addedClass = { reading: e.target.value };
+  handleReadingTitleInput = (e) => {
+    const addedClass = { readingTitle: e.target.value };
+    this.setState({addedClass: Object.assign(this.state.addedClass, addedClass)})
+  }
+  handleReadingLinkInput = (e) => {
+    const addedClass = { readingLink: e.target.value };
     this.setState({addedClass: Object.assign(this.state.addedClass, addedClass)})
   }
 
@@ -45,10 +50,16 @@ class AdminAddClass extends Component {
           fullWidth
           onChange={ (e) => this.handleTitleInput(e)}/>
         <TextField
-          label="Reading"
-          placeholder="Reading"
+          label="Reading Title"
+          placeholder="Reading Title"
           fullWidth
-          onChange={ (e) => this.handleReadingInput(e)}
+          onChange={ (e) => this.handleReadingTitleInput(e)}
+        />
+        <TextField
+          label="Reading Link"
+          placeholder="Reading Link"
+          fullWidth
+          onChange={ (e) => this.handleReadingLinkInput(e)}
         />
         <TextField
           label="Video URL"

@@ -5,6 +5,16 @@ export function toggleSidebarIsOut(bool) {
     }
 }
 
+// export function updateSicpProgress(newKey, bool) {
+//     return function(dispatch) {
+//         dispatch({
+//             type: "UPDATE_SICP_PROGRESS",
+//         });
+//         const updatedValue = {[newKey]: bool}
+//         Object.assign()
+//     }
+// }
+
 export function loadSICPLessons() {
     return function(dispatch) {
         dispatch({
@@ -25,17 +35,17 @@ export function SICPLessonsLoaded(sicplessons) {
     }
 }
 
-export function addProgress() {
-    return {
-        type: "ADD_PROGRESS",
-    }
-}
+// export function addProgress() {
+//     return {
+//         type: "ADD_PROGRESS",
+//     }
+// }
 
-export function subtractProgress() {
-    return {
-        type: "SUBTRACT_PROGRESS"
-    }
-}
+// export function subtractProgress() {
+//     return {
+//         type: "SUBTRACT_PROGRESS"
+//     }
+// }
 
 export function adminAddClass(addedClass) {
     return function(dispatch) {
@@ -68,22 +78,3 @@ export function AddedClassesLoaded(addedclasses) {
         value: addedclasses
     }
 }
-
-export function loadUserProgress(id) {
-    return function(dispatch) {
-        fetch(`/users/${id}`)
-        .then((response) => {
-            return response.json();
-        }).then((userProgress) => {
-            dispatch(userProgressLoaded(userProgress))
-        })
-    }
-}
-
-export function userProgressLoaded(userProgress) {
-    return {
-        type: "GET_USER_PROGRESS",
-        value: userProgress
-    }
-}
-

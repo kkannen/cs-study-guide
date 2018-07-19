@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kkannen/cs-study-guide#readme",
   "dependencies": {
+    "dotenv": "^6.0.0",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1"
   },

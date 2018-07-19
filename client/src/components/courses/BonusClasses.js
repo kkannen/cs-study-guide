@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Lesson from "../../containers/LessonContainer"
+import BonusLesson from "../BonusLesson"
 
 class BonusClasses extends Component {
   componentDidMount = () => {
@@ -7,33 +7,27 @@ class BonusClasses extends Component {
   }
 
   renderLessons = () => {
+    console.log("BONUS LESSONS", this.props.addedClassesList )
     return this.props.addedClassesList.map((lesson, index) => {
       return (
-        <div key={index}>
-          <Lesson lesson={lesson}/>
-        </div>
-        
+        <BonusLesson
+          key={index} 
+          lesson={lesson}
+          lessonNumber={index + 1}
+        />        
       )
     })
   }
 
+ 
   render() {
-    console.log(this.props.addedClassesList)
     return (
-      <div className="BonusClasses">
-        <h1>WOW NEW CLASSES THAT TOTALLY HAVE A POINT</h1>
-        {
-          this.props.addedClassesList.map((added, key) => {
-            return (
-              <div>
-                {this.renderLessons()}
-              </div>
-              
-            )
-          })
-        }
-        
+      <div style={{textAlign: "center"}}>
+        <h1>Just a few more things....</h1>
+        <p>Below is a list of a few extra resources, I thought might be good suppliments to your CS journey.</p>        
+        {this.renderLessons()}
       </div>
+      
     );
   }
 }

@@ -15,17 +15,18 @@ import SignUpSignIn from './components/SignUpSignIn';
 import AdminAddClass from './containers/AdminAddClassContainer';
 import BonusClasses from './containers/BonusClassesContainer';
 
-
 class App extends Component {
 
   state = {
     signUpSignInError: "",
-    authenticated: false
+    authenticated: false,
+    lessons: null,
+    username: null,
+    isAdmin:true,
+    testProp: "mrPoopyButthole",
+    currentUser: null
   };
 
-  componentDidMount = () => {
-    console.log("app didmount")
-  }
 
   handleSignUp = (credentials) => {
     const {username, password, confirmPassword} = credentials;
@@ -48,11 +49,12 @@ class App extends Component {
         if(data["error"]) {
           return this.setState({signUpSignInError: data["error"]})
         }
-        const {token} = data;
+        const {token} = data.token;
         localStorage.setItem("token", token);
         this.setState({
           signUpSignInError: "",
-          authenticated: token
+          authenticated: data.token,
+          currentUser: data.user
         });
       });
     };
@@ -65,6 +67,9 @@ class App extends Component {
         signUpSignInError: 'Must Provide All Fields',
       });
     } else {
+      if(username === "kmkannen@gmail.com"){
+        this.setState({isAdmin: true})
+      }
       fetch("/sessions", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -75,11 +80,13 @@ class App extends Component {
           if(data["error"]){
             return this.setState({signUpSignInError: data["error"]})
           }
-          const { token } = data;
+          
+          const { token } = data.token;
           localStorage.setItem('token', token);
           this.setState({
             signUpSignInError: '',
-            authenticated: token
+            authenticated: data.token,
+            currentUser: data.user
           });
         });
     }
@@ -88,7 +95,9 @@ class App extends Component {
   handleSignOut = () => {
     localStorage.removeItem("token");
     this.setState({
-      authenticated: false
+      authenticated: false,
+      currentUser: null,
+      isAdmin: false
     });
   };
 
@@ -103,15 +112,23 @@ class App extends Component {
     );
   };
 
+  isAdministrator = () => {
+    if(this.state.isAdmin) {
+      return (
+        <Route path="/admin-add-class" component={AdminAddClass}/>
+      )
+    } return null
+  }
+
   renderApp = () => {
     return (
       <div className="protectedContent">
-        <Sidebar onSignOut={this.handleSignOut}/>
+        <Sidebar onSignOut={this.handleSignOut} isAdmin={this.state.isAdmin}/>
           <div className="courseMaterial" style={this.moduleWidth()}>
             <Switch>
-              <Route path="/admin-add-class" component={AdminAddClass}/>
+              {this.isAdministrator()}
               <Route path="/bonus-classes" component={BonusClasses}/>
-              <Route path="/sicp" component={SICP}/>
+              <Route path="/sicp" render={() => <SICP currentUser={this.state.currentUser}/>}/>
               <Route path="/algorithms-and-data-structures" component={AlgorithmsDataStructures}/>
               <Route path="/computer-architecture" component={ComputerArchitecture}/>
               <Route path="/computer-networking" style={{display: "flex"}} component={ComputerNetworking}/>
@@ -123,14 +140,12 @@ class App extends Component {
             </Switch>
           </div>
       </div>
-      
     )
   }
 
   moduleWidth = () => this.props.sidebarIsOut ? {width: "75%"} : {width: "93%"}
       
   render() {
-
     let whatToShow;
     if(!this.state.authenticated){
       whatToShow = this.renderApp();
@@ -138,6 +153,7 @@ class App extends Component {
       whatToShow = this.renderSignUpSignIn();
     }
 
+    console.log("APP STATE", this.state)
     return (
       <BrowserRouter>
         <div className="App">

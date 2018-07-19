@@ -23,7 +23,14 @@
 .adminAddClass {
   width: 60%;
   margin-left: 20%;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.adminAddClass > Button {
+  margin-top: 15px;
+  width: 35%;
 }
 
 /*----------SIGN UP SIGN IN STYLES----------*/
@@ -95,17 +102,23 @@
 /*----------SIDEBAR MODULE STYLES----------*/
 
 .SidebarModule {
-  width: 90%;
   padding: 5%;
-  height: 2.5em;
   display: flex;
   align-items: center;
+  font-weight: lighter;
+  font-size: 20px;
+  margin: 0px
+}
+
+.SidebarModule > * {
   font-size: 20px;
 }
 
-.Sidebar > *:nth-child(odd) {
-  background-color: #00000023
+.Sidebar > *:nth-child(odd){
+  background-color: #0002
+
 }
+
 
 .Sidebar > a {
   text-decoration: none;

@@ -7,7 +7,7 @@ class SidebarModule extends Component {
         return (
 
             <div className="SidebarModule" style={this.props.bg}>
-                <h3 style={{alignSelf: "center"}} >{this.props.module.title}</h3>
+                <h3 style={{alignSelf: "center", margin: 0}} >{this.props.module.title}</h3>
                 {/* <p style={{fontWeight: "lighter", margin:0}} >{this.props.module.description}</p> */}
             </div>
 
