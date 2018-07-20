@@ -25,7 +25,7 @@ class Sidebar extends Component {
         if(this.props.sidebarIsOut) {
             return(
                 <div className={this.sidebarClass()}>
-                    <button className={this.buttonClass()} onClick={this.toggleSidebar}>
+                    <button style={{backgroundColor: "#0000"}} className={this.buttonClass()} onClick={this.toggleSidebar}>
                         <i className="material-icons addIcon"> arrow_forward_ios</i>
                     </button>
                     <Link to="/">

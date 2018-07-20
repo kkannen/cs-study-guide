@@ -159,7 +159,7 @@ class App extends Component {
   }
 }
 
-SignUp.propTypes = {
+App.propTypes = {
   sidebarIsOut: PropTypes.bool
 };
 
