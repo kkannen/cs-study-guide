@@ -9,16 +9,11 @@ class BonusClasses extends Component {
   }
 
   componentDidMount = () => {
-    //this.props.loadAddedClasses();
-    fetch("/addedClasses").then((response) => {
-      return response.json();
-      }).then((response) => {
-        this.setState({classes: response})
-      })
+    this.props.loadAddedClasses();
   }
 
   renderLessons = () => {
-    return this.state.classes.map((lesson, index) => {
+    return this.props.addedClassesList.map((lesson, index) => {
       return (
         <BonusLesson
           key={index} 
