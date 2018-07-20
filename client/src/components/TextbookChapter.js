@@ -19,7 +19,7 @@ class TextbookChapter extends Component {
 }
 
 TextbookChapter.propTypes = {
-  link: PropTypes.str,
+  link: PropTypes.string,
 };
 
 export default TextbookChapter;

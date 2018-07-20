@@ -39,7 +39,6 @@ class AdminAddClass extends Component {
 
   renderInputs = () => {
     return Object.keys(this.inputFields).map((field, index) => {
-      console.log(this.inputFields[field])
       return (
         <TextField
           key={index}

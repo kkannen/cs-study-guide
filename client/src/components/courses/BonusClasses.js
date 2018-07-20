@@ -3,12 +3,22 @@ import BonusLesson from "../BonusLesson";
 import PropTypes from "prop-types";
 
 class BonusClasses extends Component {
+
+  state = {
+    classes: []
+  }
+
   componentDidMount = () => {
-    this.props.loadAddedClasses();
+    //this.props.loadAddedClasses();
+    fetch("/addedClasses").then((response) => {
+      return response.json();
+      }).then((response) => {
+        this.setState({classes: response})
+      })
   }
 
   renderLessons = () => {
-    return this.props.addedClassesList.map((lesson, index) => {
+    return this.state.classes.map((lesson, index) => {
       return (
         <BonusLesson
           key={index} 
@@ -31,8 +41,8 @@ class BonusClasses extends Component {
 }
 
 BonusClasses.propTypes = {
-  loadAddedClasses: PropTypes.func.isRequired,
-  addedClassesList: PropTypes.Array
+  loadAddedClasses: PropTypes.func,
+  addedClassesList: PropTypes.array
 };
 
 export default BonusClasses;
