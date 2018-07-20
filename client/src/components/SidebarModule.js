@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-
+import PropTypes from "prop-types";
 
 class SidebarModule extends Component {
 
     render() {
         return (
-
-            <div className="SidebarModule" style={this.props.bg}>
-                <h3 style={{alignSelf: "center", margin: 0}} >{this.props.module.title}</h3>
-                {/* <p style={{fontWeight: "lighter", margin:0}} >{this.props.module.description}</p> */}
+            <div className="SidebarModule">
+                <h3>{this.props.module.title}</h3>
             </div>
-
         );
     }
+}
+
+SidebarModule.propTypes ={
+    module: PropTypes.object
 }
 
 export default SidebarModule;

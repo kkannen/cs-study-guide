@@ -14,19 +14,16 @@ import MathForCS from "./components/courses/MathForCS"
 import SignUpSignIn from './components/SignUpSignIn';
 import AdminAddClass from './containers/AdminAddClassContainer';
 import BonusClasses from './containers/BonusClassesContainer';
+import PropTypes from "prop-types";
 
 class App extends Component {
 
   state = {
     signUpSignInError: "",
     authenticated: false,
-    lessons: null,
-    username: null,
-    isAdmin:true,
-    testProp: "mrPoopyButthole",
+    isAdmin: false,
     currentUser: null
   };
-
 
   handleSignUp = (credentials) => {
     const {username, password, confirmPassword} = credentials;
@@ -60,7 +57,7 @@ class App extends Component {
     };
   };
 
-    handleSignIn = (credentials) => {
+  handleSignIn = (credentials) => {
     const { username, password } = credentials;
     if (!username.trim() || !password.trim()) {
       this.setState({
@@ -80,7 +77,6 @@ class App extends Component {
           if(data["error"]){
             return this.setState({signUpSignInError: data["error"]})
           }
-          
           const { token } = data.token;
           localStorage.setItem('token', token);
           this.setState({
@@ -146,22 +142,25 @@ class App extends Component {
   moduleWidth = () => this.props.sidebarIsOut ? {width: "75%"} : {width: "93%"}
       
   render() {
-    let whatToShow;
-    if(!this.state.authenticated){
-      whatToShow = this.renderApp();
+    let renderAuthOrApp;
+    if(this.state.authenticated){
+      renderAuthOrApp = this.renderApp();
     } else {
-      whatToShow = this.renderSignUpSignIn();
+      renderAuthOrApp = this.renderSignUpSignIn();
     }
 
-    console.log("APP STATE", this.state)
     return (
       <BrowserRouter>
         <div className="App">
-          {whatToShow}
+          {renderAuthOrApp}
         </div>
       </BrowserRouter>
     );
   }
 }
+
+SignUp.propTypes = {
+  sidebarIsOut: PropTypes.bool
+};
 
 export default App;

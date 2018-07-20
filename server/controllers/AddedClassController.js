@@ -8,12 +8,11 @@ module.exports.read = (request, response) => {
 module.exports.create = (request, response) => {
     console.log(request.body)
     const newAddedClass = new AddedClass({
-
         "title": request.body.title,
         "reading": {[request.body.readingTitle] : request.body.readingLink},
         "playlist": request.body.playlist,
-
     })
+    
     newAddedClass.save()
     .then(savedAddedClass => response.json(savedAddedClass))
 }

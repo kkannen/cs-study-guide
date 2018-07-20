@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Playlist from './Playlist';
 import TextbookChapter from './TextbookChapter';
 import ChapterNumber from './ChapterNumber';
+import PropTypes from "prop-types";
+
 
 class BonusLesson extends Component {
 
@@ -10,7 +12,6 @@ class BonusLesson extends Component {
         textbookVisible: false,
         checked: false,
         chapterSelected: null,
-        lessons: this.props.progress
     }
 
 
@@ -67,4 +68,10 @@ class BonusLesson extends Component {
         )
     }
 }
+
+BonusLesson.propTypes = {
+    lesson: PropTypes.object,
+    lessonNumber: PropTypes.number,
+};
+
 export default BonusLesson;

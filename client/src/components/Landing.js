@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 
 class Landing extends Component {
 
@@ -58,5 +59,9 @@ class Landing extends Component {
     );
   }
 }
+
+Landing.propTypes = {
+  listOfModules: PropTypes.array,
+};
 
 export default Landing;

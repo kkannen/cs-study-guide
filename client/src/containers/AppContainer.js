@@ -5,8 +5,6 @@ import App from "../App";
 const mapStateToProps = (state) => {
     return {
         sidebarIsOut: state.sidebarIsOut,
-        userProgress: state.userProgress,
-        sicpProgress: state.sicpProgress
     }
 }
 

@@ -5,16 +5,6 @@ export function toggleSidebarIsOut(bool) {
     }
 }
 
-// export function updateSicpProgress(newKey, bool) {
-//     return function(dispatch) {
-//         dispatch({
-//             type: "UPDATE_SICP_PROGRESS",
-//         });
-//         const updatedValue = {[newKey]: bool}
-//         Object.assign()
-//     }
-// }
-
 export function loadSICPLessons() {
     return function(dispatch) {
         dispatch({
@@ -34,18 +24,6 @@ export function SICPLessonsLoaded(sicplessons) {
         value: sicplessons
     }
 }
-
-// export function addProgress() {
-//     return {
-//         type: "ADD_PROGRESS",
-//     }
-// }
-
-// export function subtractProgress() {
-//     return {
-//         type: "SUBTRACT_PROGRESS"
-//     }
-// }
 
 export function adminAddClass(addedClass) {
     return function(dispatch) {

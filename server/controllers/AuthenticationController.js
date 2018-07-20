@@ -8,7 +8,7 @@ function authentication(request, response, next) {
   if (!tokenString) {
     return response.send("Invalid credentials");
   }
-  const tokenObject = jwt.decode(tokenString, "abc123"/*process.env.SECRET*/);
+  const tokenObject = jwt.decode(tokenString, process.env.SECRET);
   // decrypt the token
   // find user by id
   User.findById(tokenObject.userId, function (err, user) {

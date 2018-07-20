@@ -3,7 +3,7 @@ import Playlist from './Playlist';
 import TextbookChapter from './TextbookChapter';
 import ChapterNumber from './ChapterNumber';
 import Checkbox from '@material-ui/core/Checkbox';
-
+import PropTypes from "prop-types";
 
 class Lesson extends Component {
 
@@ -12,13 +12,7 @@ class Lesson extends Component {
         textbookVisible: false,
         checked: false,
         chapterSelected: null,
-        lessons: this.props.progress
     }
-    
-
-    handleCheck = () => this.state.checked ? 
-        this.setState({checked: false}) : 
-        this.setState({checked: true});
 
     toggleVideo = () => this.state.videoVisible ? 
         this.setState({videoVisible: false}) : 
@@ -31,19 +25,19 @@ class Lesson extends Component {
         this.setState({textbookVisible:false});
     }
 
-      renderPlaylists = () => this.state.videoVisible ? 
+    renderPlaylists = () => this.state.videoVisible ? 
         <Playlist playlist={this.props.lesson["playlist"]}/> : null;
   
-      renderChapterNumbers = () => {
+    renderChapterNumbers = () => {
         const chapterNumbers = Object.keys(this.props.lesson["reading"]);
         return chapterNumbers.map((chapNum, i) => 
             <ChapterNumber 
                 key={i}
                 clickEvent={()=>this.toggleTextbook(chapNum)}
                 chapterNumber={chapNum}/>)
-      }
+    }
 
-      renderTextbook = () => {
+    renderTextbook = () => {
         if(this.state.textbookVisible && Object.keys(this.props.lesson["reading"])[0] === "none"){
           return null
         } else if (this.state.textbookVisible) {
@@ -52,16 +46,7 @@ class Lesson extends Component {
             <TextbookChapter link={link}/>
           )
         } return null
-      }
-
-      handleCheck = () => this.state.checked ? 
-        this.setState({checked: false}) : 
-        this.setState({checked: true})
-
-      handleProgress = () => !this.state.checked ? 
-        this.props.increase() : 
-        this.props.decrease();
-
+    }
      
     render() {
         return(
@@ -85,4 +70,10 @@ class Lesson extends Component {
         )
     }
 }
+
+Lesson.propTypes = {
+    lesson: PropTypes.object,
+    progress: PropTypes.object,
+};
+
 export default Lesson;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom"
 import SidebarModule from "./SidebarModule";
+import PropTypes from "prop-types";
 
 class Sidebar extends Component {
     
@@ -10,8 +11,13 @@ class Sidebar extends Component {
 
     isAdministrator = () => {
         if (this.props.isAdmin){
-            return <Link to="/admin-add-class"><div className="SidebarModule"><h3 style={{margin: 0}}>Admin</h3></div>
-            </Link>
+            return  (
+                <Link to="/admin-add-class">
+                    <div className="SidebarModule">
+                        <h3 style={{margin: 0}}>Admin</h3>
+                    </div>
+                </Link>
+            )
         } return null
     }
 
@@ -19,19 +25,35 @@ class Sidebar extends Component {
         if(this.props.sidebarIsOut) {
             return(
                 <div className={this.sidebarClass()}>
-                    <button className={this.buttonClass()} onClick={this.toggleSidebar}><i className="material-icons addIcon"> arrow_forward_ios</i></button>
-                    <Link to="/"><div className="SidebarModule"><h3 style={{margin: 0}}>Home</h3></div></Link>
+                    <button className={this.buttonClass()} onClick={this.toggleSidebar}>
+                        <i className="material-icons addIcon"> arrow_forward_ios</i>
+                    </button>
+                    <Link to="/">
+                        <div className="SidebarModule">
+                            <h3 style={{margin: 0}}>Home</h3>
+                        </div>
+                    </Link>
                     {this.isAdministrator()}
                     {this.props.listOfModules.map((module, index) => {
-                        return(<Link to={module.route} key={index}><SidebarModule module={module}/></Link>)})}
-                    <Link to="/"><div className="SidebarModule"><h3 style={{margin: 0}} onClick={this.props.onSignOut}>Log Out</h3></div>
+                        return(
+                            <Link to={module.route} key={index}>
+                                <SidebarModule module={module}/>
+                            </Link>)
+                        })
+                    }
+                    <Link to="/">
+                        <div className="SidebarModule">
+                            <h3 style={{margin: 0}} onClick={this.props.onSignOut}>Log Out</h3>
+                        </div>
                     </Link>
                 </div>
             )
         } else {
             return (
                 <div className={this.sidebarClass()}>
-                    <button className={this.buttonClass()} onClick={this.toggleSidebar}><i className="material-icons addIcon"> arrow_forward_ios</i></button>
+                    <button className={this.buttonClass()} onClick={this.toggleSidebar}>
+                        <i className="material-icons addIcon"> arrow_forward_ios</i>
+                    </button>
                 </div>
             )
         }
@@ -49,5 +71,14 @@ class Sidebar extends Component {
         );
     }
 }
+
+Sidebar.propTypes = {
+    handleCloseSidebar: PropTypes.func,
+    handleOpenSidebar: PropTypes.func,
+    sidebarIsOut: PropTypes.bool,
+    isAdmin: PropTypes.bool,
+    listOfModules: PropTypes.array,
+    onSignOut: PropTypes.func
+};
 
 export default Sidebar;

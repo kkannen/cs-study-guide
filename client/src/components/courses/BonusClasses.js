@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import BonusLesson from "../BonusLesson"
+import BonusLesson from "../BonusLesson";
+import PropTypes from "prop-types";
 
 class BonusClasses extends Component {
   componentDidMount = () => {
@@ -7,7 +8,6 @@ class BonusClasses extends Component {
   }
 
   renderLessons = () => {
-    console.log("BONUS LESSONS", this.props.addedClassesList )
     return this.props.addedClassesList.map((lesson, index) => {
       return (
         <BonusLesson
@@ -19,7 +19,6 @@ class BonusClasses extends Component {
     })
   }
 
- 
   render() {
     return (
       <div style={{textAlign: "center"}}>
@@ -27,9 +26,13 @@ class BonusClasses extends Component {
         <p>Below is a list of a few extra resources, I thought might be good suppliments to your CS journey.</p>        
         {this.renderLessons()}
       </div>
-      
     );
   }
 }
+
+BonusClasses.propTypes = {
+  loadAddedClasses: PropTypes.func.isRequired,
+  addedClassesList: PropTypes.Array
+};
 
 export default BonusClasses;

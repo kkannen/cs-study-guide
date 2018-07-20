@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 
 class ChapterNumber extends Component {
 
@@ -11,5 +12,10 @@ class ChapterNumber extends Component {
     );
   }
 }
+
+ChapterNumber.propTypes = {
+  clickEvent: PropTypes.func,
+  chapterNumber: PropTypes.string,
+};
 
 export default ChapterNumber;

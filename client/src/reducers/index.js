@@ -22,29 +22,11 @@ const sicpLessonsList = (state = [], action) => {
     } return state
 };
 
-// const sicpProgress = (state = 0, action) => {
-//     if(action.type === "ADD_PROGRESS") {
-//         return state + (100/38);
-//     } else if (action.type === "SUBTRACT_PROGRESS") {
-//         return state - (100/38);
-//     } else {
-//         return state;
-//     }
-// }
-
-
-const sicpProgress = (state ={}, action) => {
-    if(action.type === "GET_CURRENT_USER") {
-        return action.value.sicpProgress
-    } return state
-}
-
 const rootReducer = combineReducers({
     listOfModules, 
     sicpLessonsList, 
     sidebarIsOut, 
     addedClassesList,
-    sicpProgress
 });
 
 export default rootReducer;

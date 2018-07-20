@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(require("./routes/SICPLessonRoutes"))
 app.use(require("./routes/UserRoutes"));
 app.use(require("./routes/SessionRoutes"));
-//app.use(require("./routes/AuthenticationRoutes"));
+app.use(require("./routes/AuthenticationRoutes"));
 app.use(require("./routes/SICPLessonRoutes"))
 app.use(require("./routes/AddedClassRoutes"))
 
@@ -22,12 +22,6 @@ mongoose.connect(process.env.mongodburi)
 },
 err => {
   console.log('\x1b[31m%s\x1b[0m', "mongoose did not connect",err);
-});
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
 });
 
 const port = process.env.PORT || 3001;
