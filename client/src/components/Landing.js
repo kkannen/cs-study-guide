@@ -22,7 +22,7 @@ class Landing extends Component {
       <div className="Landing">
         <h1 style={{fontSize: 50}}>Welcome to your C.S. study guide!</h1>
         <h2 style={{width:"80%"}}>This app is designed to allow you to easily navigate several important subjects within the field of computer science.</h2>
-        <p style={{width:"70%"}}>Each module on this page includes a textbook and video lecture series. I reccomend completing the modules in the order they are presented, but of course, you do not have to.</p>
+        <p style={{width:"70%"}}><strong style={{color: "#270C75"}}>DISCLAIMER: None of these resources are my own. This page is meant to be a collection of materials that I found helpful and informative, and that I organized in a way that I believe makes them easier to navigate.</strong><br/>Each module on this page includes a textbook and video lecture series. I reccomend completing the modules in the order they are presented, but of course, you do not have to.</p>
         <hr style={{width: "80%", color: "#3C0079"}}/>
         <table>
           <tbody>

@@ -48,7 +48,7 @@ function saveUser(username,password,done) {
     user.save()
       .then(u => {
         console.log("User has been saved to database");
-        done({ token: tokenForUser(u) });
+        done({ token: tokenForUser(u), u });
       });
   });
 }

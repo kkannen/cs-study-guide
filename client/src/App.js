@@ -36,7 +36,7 @@ class App extends Component {
         signUpSignInError: "Your passwords do not match"
       });
     } else {
-      fetch("/users", {
+      fetch("/api/users", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(credentials)
@@ -48,10 +48,12 @@ class App extends Component {
         }
         const {token} = data.token;
         localStorage.setItem("token", token);
+        document.cookie="access_token=["+data.token+"]"
+        console.log("cookie", document.cookie)        
         this.setState({
           signUpSignInError: "",
           authenticated: data.token,
-          currentUser: data.user
+          currentUser: data.u
         });
       });
     };
@@ -67,7 +69,7 @@ class App extends Component {
       if(username === "kmkannen@gmail.com"){
         this.setState({isAdmin: true})
       }
-      fetch("/sessions", {
+      fetch("/api/sessions", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(credentials)
@@ -79,6 +81,8 @@ class App extends Component {
           }
           const { token } = data.token;
           localStorage.setItem('token', token);
+          document.cookie=`access_token=[${token}]`
+          console.log("cookie", document.cookie)
           this.setState({
             signUpSignInError: '',
             authenticated: data.token,

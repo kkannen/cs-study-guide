@@ -53,6 +53,7 @@ class SICP extends Component {
         return (
         <div className="SICP">
             <h1 style={{fontSize: 40}}>Structure and Interpretation of Computer Programs</h1>
+            <strong style={{color: "#270C75"}}>DISCLAIMER: None of these resources are my own. This page is meant to be a collection of materials that I found helpful and informative, and that I organized in a way that I believe makes them easier to navigate.</strong>
             <p>Textbook: Structure and Interpretation of Computer Programs 2nd Edition by Gerald Jay Sussman and Hal Abelson</p>
             <p>Video Lecture: UC Berkely's CS61a, Spring 2018</p>
             <strong style={{fontSize:"1.2em"}}>Useful tools for this class:</strong>

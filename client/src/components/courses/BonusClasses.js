@@ -28,7 +28,8 @@ class BonusClasses extends Component {
     return (
       <div style={{textAlign: "center"}}>
         <h1>Just a few more things....</h1>
-        <p>Below is a list of a few extra resources, I thought might be good suppliments to your CS journey.</p>        
+        <p>Below is a list of a few extra resources, I thought might be good suppliments to your CS journey.</p>    
+        <strong style={{color: "#270C75"}}>DISCLAIMER: None of these resources are my own. This page is meant to be a collection of materials that I found helpful and informative, and that I organized in a way that I believe makes them easier to navigate.</strong>    
         {this.renderLessons()}
       </div>
     );
